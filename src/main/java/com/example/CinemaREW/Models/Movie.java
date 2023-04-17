@@ -102,3 +102,7 @@ public class Movie {
         this.to=to;
     }
 }
+
+class CinemaList {
+
+}
