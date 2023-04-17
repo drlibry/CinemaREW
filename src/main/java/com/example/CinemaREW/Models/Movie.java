@@ -26,8 +26,6 @@ public class Movie {
     @Column(name="title_english")
     private String title_english;
 
-    @Column(name="title_japanese")
-    private String title_japanese;
 
     @Column(name="type")
     private String TV;
@@ -87,7 +85,6 @@ public class Movie {
         this.id=mal_id;
         this.title=title;
         this.title_english=title_english;
-        this.title_japanese=title_japanese;
         this.TV=tv;
         this.episodes=episodes;
         this.status=status;
