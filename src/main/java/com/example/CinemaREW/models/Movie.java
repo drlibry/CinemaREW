@@ -1,13 +1,25 @@
 package com.example.CinemaREW.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Entity
+@Table(name="anime_table")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Movie {
-    private String name;
+    @Id
     private int id;
+
+
+    private int kinopoiskId;
+
+    private String name;
     private float ratingKP;
     private float ratingIMDB;
     private int year;
