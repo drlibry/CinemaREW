@@ -8,13 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="anime_table")
+@Table(name="movie_table")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Movie {
     @Id
-    private int id;
+    private Long id;
 
 
     private int kinopoiskId;
