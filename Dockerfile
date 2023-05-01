@@ -8,5 +8,5 @@ ARG PGUSER
 ARG PROJECT_PATH
 ADD . /CinemaREW
 WORKDIR . /CinemaREW
-RUN maven build -x test
-ENTRYPOINT ["java","-jar","CinemaREW.jar"]
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
