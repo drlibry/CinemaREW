@@ -1,4 +1,4 @@
-FROM maven
+FROM adoptopenjdk/maven-openjdk8
 ARG DATABASE_URL
 ARG PGDATABASE
 ARG PGHOST
