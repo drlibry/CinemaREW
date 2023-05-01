@@ -8,6 +8,4 @@ ARG PGUSER
 ARG PROJECT_PATH
 ADD . /CinemaREW
 WORKDIR . /CinemaREW
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar"]
