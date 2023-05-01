@@ -1,5 +1,4 @@
-FROM adoptopenjdk/maven-openjdk8
-ARG JAR_FILE=target/spring-docker-simple-0.0.1-SNAPSHOT.jar
+FROM maven
 ARG DATABASE_URL
 ARG PGDATABASE
 ARG PGHOST
