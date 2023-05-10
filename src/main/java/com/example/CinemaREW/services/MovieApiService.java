@@ -6,10 +6,10 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 @Service
-public class CinemaApiService {
+public class MovieApiService {
     private WebClient webClient;
 
-    public CinemaApiService(WebClient webClient) {
+    public MovieApiService(WebClient webClient) {
         this.webClient = webClient;
     }
 

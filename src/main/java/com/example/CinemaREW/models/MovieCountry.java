@@ -6,11 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="movie_genre")
+@Table(name="movie_country")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MovieGenre {
+public class MovieCountry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,10 +19,10 @@ public class MovieGenre {
     private Movie movie;
 
     @OneToOne
-    private Genre genre;
+    private Country country;
 
-    public MovieGenre(Movie movie, Genre genre){
+    public MovieCountry(Movie movie, Country country){
         this.movie = movie;
-        this.genre = genre;
+        this.country = country;
     }
 }
