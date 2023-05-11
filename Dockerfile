@@ -1,0 +1,12 @@
+FROM adoptopenjdk/maven-openjdk8
+ARG JAR_FILE=target/*.jar
+ARG DATABASE_URL
+ARG PGDATABASE
+ARG PGHOST
+ARG PGPASSWORD
+ARG PGUSER
+ARG PROJECT_PATH
+ADD . /CinemaREW
+WORKDIR . /CinemaREW
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
