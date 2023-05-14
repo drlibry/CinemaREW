@@ -15,11 +15,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Movie {
+//    @Id
+//    @Column(name = "id")
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long id;
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @Column(name = "kinopoiskId")
     private int kinopoiskId;
 
@@ -49,26 +49,26 @@ public class Movie {
 
     @Column(name = "description", columnDefinition = "text")
     private String description;
-     public Movie(Long id,
-                  int kinopoiskId,
+     public Movie(int kinopoiskId,//Long id,
                   String nameRu,
                   String nameOriginal,
-                  List<MovieCountry> countries,
-                  List<MovieGenre> genres,
+                  //List<MovieCountry> countries,
+                  //List<MovieGenre> genres,
+                  float ratingKinopoisk,
                   float ratingImdb,
                   int year,
-                  String posterUrl,
-                  String description){
-         this.id = id;
+                  String posterUrl){ //String description
+         //this.id = id;
          this.kinopoiskId = kinopoiskId;
          this.nameRu = nameRu;
          this.nameOriginal = nameOriginal;
-         this.countries = countries;
-         this.genres = genres;
+         //this.countries = countries;
+         //this.genres = genres;
+         this.ratingKinopoisk = ratingKinopoisk;
          this.ratingImdb = ratingImdb;
          this.year = year;
          this.posterUrl= posterUrl;
-         this.description =description ;
+         //this.description =description ;
      }
 
 

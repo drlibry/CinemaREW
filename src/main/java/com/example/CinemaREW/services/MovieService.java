@@ -1,8 +1,8 @@
 package com.example.CinemaREW.services;
 
-
-import com.example.CinemaREW.Reposits.MovieRepository;
 import com.example.CinemaREW.models.Movie;
+import com.example.CinemaREW.Reposits.MovieRepository;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +20,9 @@ import java.util.List;
 @Slf4j
 @Component
 @RequiredArgsConstructor
+
 public class MovieService {
-    private final MovieRepository movieRepository;
+    private MovieRepository movieRepository;
     private List<Movie> movies = new ArrayList<>();
 
 
