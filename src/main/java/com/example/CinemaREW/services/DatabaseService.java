@@ -1,10 +1,8 @@
 package com.example.CinemaREW.services;
 
 
-import com.example.CinemaREW.Reposits.GenreRepository;
-import com.example.CinemaREW.Reposits.MovieRepository;
-import com.example.CinemaREW.models.Movie;
-import com.example.CinemaREW.models.MovieGenre;
+import com.example.CinemaREW.Reposits.*;
+import com.example.CinemaREW.models.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
@@ -21,21 +19,36 @@ import java.util.List;
 public class DatabaseService {
     private final MovieRepository movieRepository;
     private final GenreRepository genreRepository;
+    private final CountryRepository countryRepository;
     private final ConfirmService confirmService;
     private final MovieGenreService movieGenreService;
-
+    private final MovieCountryRepository movieCountryRepository;
+    private final MovieGenreRepository movieGenreRepository;
     @Scheduled(fixedRate = 24*60*60*1000)
     @Async
     public void updateGenreTable(){
-        //List<Genre> genreList=confirmService.getGenreListFromGenreDTOList();  - это должен быть как раз запрос с жанром
-//        Genre genre;
-//        for(int i=0;i<genreList.size();i++){
-//            genre=genreRepository.findGenreById(genreList.get(i).getId());
-//            if(genre==null) genreRepository.save(genreList.get(i));
-//            else{
-//                genreRepository.updateGenre(genre.getId(),genre.getName());
-//            }
-//        }
+        List<Genre> genreList=confirmService.getGenreListFromGenreDTOList();
+        Genre genre;
+        for(int i=0;i<genreList.size();i++){
+            genre=genreRepository.findGenreById(genreList.get(i).getId());
+            if(genre==null) genreRepository.save(genreList.get(i));
+            else{
+                genreRepository.updateGenre(genre.getId(),genre.getName());
+            }
+        }
+    }
+    @Scheduled(fixedRate = 24*60*60*1000)
+    @Async
+    public void updateCountryTable(){
+        List<Country> countryList=confirmService.getCountryListFromCountryDTOList();
+        Country country;
+        for(int i=0;i<countryList.size();i++){
+            country=countryRepository.findCountryById(countryList.get(i).getId());
+            if(country==null) countryRepository.save(countryList.get(i));
+            else{
+                countryRepository.updateCountry(country.getId(),country.getName());
+            }
+        }
     }
 
     @Scheduled(fixedRate = 24*60*60*1000)
@@ -60,13 +73,21 @@ public class DatabaseService {
                     Movie movie1=movieList.get(i);
                     for(int j=0;j<movie1.getGenres().size();j++){
                         MovieGenre movieGenre=new MovieGenre(movie1,movie1.getGenres().get(j).getGenre());
-                        // у нас банально нету moviegenrerepo
-//                        MovieGenre movieGenre1=movieGenreRepository.findMovieGenreByMovieAndGenre(movie1,
-//                                movie1.getMovieGenres().get(j).getGenre());
-//                        if(movieGenre1==null) animeGenreRepository.save(animeGenre);
-//                        else animeGenreRepository.updateAnimeGenre(animeGenre1.getId(),animeGenre.getAnime(),animeGenre.getGenre());
+                        MovieGenre movieGenre1=movieGenreRepository.findMovieGenreByMovieAndGenre(movie1,
+                                movie1.getGenres().get(j).getGenre());
+                        //if(movieGenre1==null) movieGenreRepository.save(movieGenre);
+                        //else movieGenreRepository.updateMovieGenre(movieGenre1.getId(),movieGenre.getMovie(),movieGenre.getGenre());
                     }
-                }
+                    for(int j=0;j<movie1.getCountries().size();j++){
+                        MovieCountry movieCountry=new MovieCountry(movie1,movie1.getCountries().get(j).getCountry());
+                        MovieCountry movieCountry1=movieCountryRepository.findMovieCountryByMovieAndCountry(movie1,
+                                movie1.getCountries().get(j).getCountry());
+                        //if(movieCountry1==null) movieGenreRepository.save(movieCountry);
+                        //else movieCountryRepository.updateMovieCountry(movieCountry1.getId(),movieCountry.getMovie(),movieCountry.getCountry());
+                    }
+                    //как-то обновить description
+
+
             }
             Thread.sleep(2000);
         }

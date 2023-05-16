@@ -1,11 +1,12 @@
 package com.example.CinemaREW.services;
 
 import com.example.CinemaREW.DTO.CinemaDTO;
+import com.example.CinemaREW.DTO.CountryDTO;
+import com.example.CinemaREW.DTO.GenreCountryDTO;
+import com.example.CinemaREW.DTO.GenreDTO;
 import com.example.CinemaREW.Reposits.CountryRepository;
 import com.example.CinemaREW.Reposits.GenreRepository;
-import com.example.CinemaREW.models.Movie;
-import com.example.CinemaREW.models.MovieCountry;
-import com.example.CinemaREW.models.MovieGenre;
+import com.example.CinemaREW.models.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -68,8 +69,36 @@ public class ConfirmService {
             }
         }
         return movieList;
-
+    }
+    public Genre getGenreFromGenreDTO(GenreDTO genreDTO){
+        Genre genre=new Genre(genreDTO.getId(), genreDTO.getGenre());
+        return genre;
     }
 
+    public List<Genre> getGenreListFromGenreDTOList(){
+        GenreCountryDTO genreCountryDTO= movieApiService.getIDofGenreAndCountry();
+        List<GenreDTO> genreDTOList = genreCountryDTO.getGenres();
+        List<Genre> genreList=new ArrayList<>();
+        for(int i=0;i<genreDTOList.size();i++){
+            genreList.add(getGenreFromGenreDTO(genreDTOList.get(i)));
+        }
+        return genreList;
+    }
+    public Country getCountryFromCountryDTO(CountryDTO countryDTO){
+        Country country=new Country(countryDTO.getId(), countryDTO.getCountry());
+        return country;
+    }
 
+    public List<Country> getCountryListFromCountryDTOList(){
+        GenreCountryDTO genreCountryDTO= movieApiService.getIDofGenreAndCountry();
+        List<CountryDTO> countryDTOList = genreCountryDTO.getCountries();
+        List<Country> countryList=new ArrayList<>();
+        for(int i=0;i<countryDTOList.size();i++){
+            countryList.add(getCountryFromCountryDTO(countryDTOList.get(i)));
+        }
+        return countryList;
+    }
 }
+
+
+
