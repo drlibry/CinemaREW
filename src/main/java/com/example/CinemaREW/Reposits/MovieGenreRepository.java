@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface MovieGenreRepository extends JpaRepository<Genre, Long>{
+public interface MovieGenreRepository extends JpaRepository<MovieGenre, Long>{
     List<MovieGenre> findAllByGenre(Genre genre);
 
     Page<MovieGenre> findAllByGenre(Genre genre, Pageable pageable);
