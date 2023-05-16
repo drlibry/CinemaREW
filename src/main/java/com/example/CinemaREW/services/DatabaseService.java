@@ -24,34 +24,36 @@ public class DatabaseService {
     private final MovieGenreService movieGenreService;
     private final MovieCountryRepository movieCountryRepository;
     private final MovieGenreRepository movieGenreRepository;
-    @Scheduled(fixedRate = 24*60*60*1000)
+
+    @Scheduled(fixedRate = 24 * 60 * 60 * 1000)
     @Async
-    public void updateGenreTable(){
-        List<Genre> genreList=confirmService.getGenreListFromGenreDTOList();
+    public void updateGenreTable() {
+        List<Genre> genreList = confirmService.getGenreListFromGenreDTOList();
         Genre genre;
-        for(int i=0;i<genreList.size();i++){
-            genre=genreRepository.findGenreById(genreList.get(i).getId());
-            if(genre==null) genreRepository.save(genreList.get(i));
-            else{
-                genreRepository.updateGenre(genre.getId(),genre.getName());
-            }
-        }
-    }
-    @Scheduled(fixedRate = 24*60*60*1000)
-    @Async
-    public void updateCountryTable(){
-        List<Country> countryList=confirmService.getCountryListFromCountryDTOList();
-        Country country;
-        for(int i=0;i<countryList.size();i++){
-            country=countryRepository.findCountryById(countryList.get(i).getId());
-            if(country==null) countryRepository.save(countryList.get(i));
-            else{
-                countryRepository.updateCountry(country.getId(),country.getName());
+        for (int i = 0; i < genreList.size(); i++) {
+            genre = genreRepository.findGenreById(genreList.get(i).getId());
+            if (genre == null) genreRepository.save(genreList.get(i));
+            else {
+                genreRepository.updateGenre(genre.getId(), genre.getName());
             }
         }
     }
 
-    @Scheduled(fixedRate = 24*60*60*1000)
+    @Scheduled(fixedRate = 24 * 60 * 60 * 1000)
+    @Async
+    public void updateCountryTable() {
+        List<Country> countryList = confirmService.getCountryListFromCountryDTOList();
+        Country country;
+        for (int i = 0; i < countryList.size(); i++) {
+            country = countryRepository.findCountryById(countryList.get(i).getId());
+            if (country == null) countryRepository.save(countryList.get(i));
+            else {
+                countryRepository.updateCountry(country.getId(), country.getName());
+            }
+        }
+    }
+
+    @Scheduled(fixedRate = 24 * 60 * 60 * 1000)
     @Scheduled(fixedDelay = 5000)
     public void updateMovieTable() throws InterruptedException {
         int start = 1;
@@ -70,17 +72,17 @@ public class DatabaseService {
                             movie.getRatingImdb(),
                             movie.getYear(),
                             movie.getPosterUrl());
-                    Movie movie1=movieList.get(i);
-                    for(int j=0;j<movie1.getGenres().size();j++){
-                        MovieGenre movieGenre=new MovieGenre(movie1,movie1.getGenres().get(j).getGenre());
-                        MovieGenre movieGenre1=movieGenreRepository.findMovieGenreByMovieAndGenre(movie1,
+                    Movie movie1 = movieList.get(i);
+                    for (int j = 0; j < movie1.getGenres().size(); j++) {
+                        MovieGenre movieGenre = new MovieGenre(movie1, movie1.getGenres().get(j).getGenre());
+                        MovieGenre movieGenre1 = movieGenreRepository.findMovieGenreByMovieAndGenre(movie1,
                                 movie1.getGenres().get(j).getGenre());
                         //if(movieGenre1==null) movieGenreRepository.save(movieGenre);
                         //else movieGenreRepository.updateMovieGenre(movieGenre1.getId(),movieGenre.getMovie(),movieGenre.getGenre());
                     }
-                    for(int j=0;j<movie1.getCountries().size();j++){
-                        MovieCountry movieCountry=new MovieCountry(movie1,movie1.getCountries().get(j).getCountry());
-                        MovieCountry movieCountry1=movieCountryRepository.findMovieCountryByMovieAndCountry(movie1,
+                    for (int j = 0; j < movie1.getCountries().size(); j++) {
+                        MovieCountry movieCountry = new MovieCountry(movie1, movie1.getCountries().get(j).getCountry());
+                        MovieCountry movieCountry1 = movieCountryRepository.findMovieCountryByMovieAndCountry(movie1,
                                 movie1.getCountries().get(j).getCountry());
                         //if(movieCountry1==null) movieGenreRepository.save(movieCountry);
                         //else movieCountryRepository.updateMovieCountry(movieCountry1.getId(),movieCountry.getMovie(),movieCountry.getCountry());
@@ -88,8 +90,9 @@ public class DatabaseService {
                     //как-то обновить description
 
 
+                }
+                Thread.sleep(2000);
             }
-            Thread.sleep(2000);
         }
     }
 }
