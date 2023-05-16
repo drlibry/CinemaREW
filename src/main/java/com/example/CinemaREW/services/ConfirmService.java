@@ -16,8 +16,8 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class ConfirmService {
-    private final MovieApiService movieApiService;
-    public final MovieGenreService movieGenreService;
+    private MovieApiService movieApiService;
+    public MovieGenreService movieGenreService;
     public GenreRepository genreRepository;
     public CountryRepository countryRepository;
 

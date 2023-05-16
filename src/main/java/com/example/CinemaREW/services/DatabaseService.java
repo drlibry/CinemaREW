@@ -17,13 +17,13 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class DatabaseService {
-    private final MovieRepository movieRepository;
-    private final GenreRepository genreRepository;
-    private final CountryRepository countryRepository;
-    private final ConfirmService confirmService;
-    private final MovieGenreService movieGenreService;
-    private final MovieCountryRepository movieCountryRepository;
-    private final MovieGenreRepository movieGenreRepository;
+    private MovieRepository movieRepository;
+    private GenreRepository genreRepository;
+    private CountryRepository countryRepository;
+    private ConfirmService confirmService;
+    private MovieGenreService movieGenreService;
+    private MovieCountryRepository movieCountryRepository;
+    private MovieGenreRepository movieGenreRepository;
 
     @Scheduled(fixedRate = 24 * 60 * 60 * 1000)
     @Async
