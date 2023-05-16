@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface MovieCountryRepository extends JpaRepository<Country, Long> {
+public interface MovieCountryRepository extends JpaRepository<MovieCountry, Long> {
     List<MovieCountry> findAllByCountry(Country country);
 
     Page<MovieCountry> findAllByCountry(Country country, Pageable pageable);

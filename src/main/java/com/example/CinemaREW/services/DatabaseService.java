@@ -78,15 +78,15 @@ public class DatabaseService {
                         MovieGenre movieGenre = new MovieGenre(movie1, movie1.getGenres().get(j).getGenre());
                         MovieGenre movieGenre1 = movieGenreRepository.findMovieGenreByMovieAndGenre(movie1,
                                 movie1.getGenres().get(j).getGenre());
-                        //if(movieGenre1==null) movieGenreRepository.save(movieGenre);
-                        //else movieGenreRepository.updateMovieGenre(movieGenre1.getId(),movieGenre.getMovie(),movieGenre.getGenre());
+                        if(movieGenre1==null) movieGenreRepository.save(movieGenre);
+                        else movieGenreRepository.updateMovieGenre(movieGenre1.getId(),movieGenre.getMovie(),movieGenre.getGenre());
                     }
                     for (int j = 0; j < movie1.getCountries().size(); j++) {
                         MovieCountry movieCountry = new MovieCountry(movie1, movie1.getCountries().get(j).getCountry());
                         MovieCountry movieCountry1 = movieCountryRepository.findMovieCountryByMovieAndCountry(movie1,
                                 movie1.getCountries().get(j).getCountry());
-                        //if(movieCountry1==null) movieGenreRepository.save(movieCountry);
-                        //else movieCountryRepository.updateMovieCountry(movieCountry1.getId(),movieCountry.getMovie(),movieCountry.getCountry());
+                        if(movieCountry1==null) movieCountryRepository.save(movieCountry);
+                        else movieCountryRepository.updateMovieCountry(movieCountry1.getId(),movieCountry.getMovie(),movieCountry.getCountry());
                     }
                     //как-то обновить description
                     MovieDescription movieDescription = new MovieDescription(movie1, movie1.getDescription());
