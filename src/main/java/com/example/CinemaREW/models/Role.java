@@ -1,6 +1,6 @@
 package com.example.CinemaREW.models;
-//import org.springframework.security.core.GrantedAuthority;
-//
+import org.springframework.security.core.GrantedAuthority;
+
 //public enum Role implements GrantedAuthority{
 //    ROLE_USER, ROLE_ADMIN;
 //    @Override

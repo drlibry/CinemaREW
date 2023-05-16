@@ -40,9 +40,9 @@ public class DatabaseService {
 
     @Scheduled(fixedRate = 24*60*60*1000)
     @Scheduled(fixedDelay = 5000)
-    public void updateAnimeTable() throws InterruptedException {
+    public void updateMovieTable() throws InterruptedException {
         int start = 1;
-        int finish = 1034;
+        int finish = 1034;//????
         for (int page = start; page <= finish; page++) {
             List<Movie> movieList = confirmService.getCinemaListFromCinemaDTOList(page);
             Movie movie;
@@ -59,11 +59,11 @@ public class DatabaseService {
                             movie.getPosterUrl());
                     Movie movie1=movieList.get(i);
                     for(int j=0;j<movie1.getGenres().size();j++){
-                        MovieGenre animeGenre=new MovieGenre(movie1,movie1.getGenres().get(j).getGenre());
+                        MovieGenre movieGenre=new MovieGenre(movie1,movie1.getGenres().get(j).getGenre());
                         // у нас банально нету moviegenrerepo
-//                        MovieGenre animeGenre1=movieGenreRepository.findAnimeGenreByAnimeAndGenre(anime1,
-//                                anime1.getAnimeGenres().get(j).getGenre());
-//                        if(animeGenre1==null) animeGenreRepository.save(animeGenre);
+//                        MovieGenre movieGenre1=movieGenreRepository.findMovieGenreByMovieAndGenre(movie1,
+//                                movie1.getMovieGenres().get(j).getGenre());
+//                        if(movieGenre1==null) animeGenreRepository.save(animeGenre);
 //                        else animeGenreRepository.updateAnimeGenre(animeGenre1.getId(),animeGenre.getAnime(),animeGenre.getGenre());
                     }
                 }

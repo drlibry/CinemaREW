@@ -37,6 +37,15 @@ public class MovieApiService {
         return response.getData();
     }
 
+    public GenreCountryDTO getIDofGenreAndCountry(){//int page
+        GenreCountryResponse response=webClient.get()
+                .uri(uriBuilder -> uriBuilder.path("/api/v2.2/films/filters")
+                        ///.queryParam("page",page)
+                        .build()).retrieve()
+                .bodyToMono(GenreCountryResponse.class).block();
+        return response.getData();
+    }
+
 //    public List<GenreDTO> getGenreList(int limit){
 //        CinemaGenresResponse response = webClient.get()
 //                .uri(uriBuilder -> uriBuilder.path("/genres/anime").queryParam("limit",limit).build()).retrieve()

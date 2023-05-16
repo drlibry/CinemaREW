@@ -1,14 +1,14 @@
-//package com.example.CinemaREW.models;
-//
-//import lombok.AllArgsConstructor;
-//import lombok.Data;
-//import lombok.NoArgsConstructor;
-//import lombok.NonNull;
-//
-//import jakarta.persistence.*;
-//import java.util.List;
-//
-//
+package com.example.CinemaREW.models;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
+import jakarta.persistence.*;
+import java.util.List;
+
+
 //@Entity
 //@Table(name="user_movie")
 //@Data
