@@ -1,9 +1,6 @@
 package com.example.CinemaREW.services;
 
-import com.example.CinemaREW.DTO.CinemaDTO;
-import com.example.CinemaREW.DTO.CountryDTO;
-import com.example.CinemaREW.DTO.GenreCountryDTO;
-import com.example.CinemaREW.DTO.GenreDTO;
+import com.example.CinemaREW.DTO.*;
 import com.example.CinemaREW.Reposits.CountryRepository;
 import com.example.CinemaREW.Reposits.GenreRepository;
 import com.example.CinemaREW.models.*;
@@ -56,6 +53,11 @@ public class ConfirmService {
             movieList.add(getCinemaFromCinemaDTO(cinemaDTOList.get(i)));
         }
         return movieList;
+    }
+    public String getDescriptionFromDescriptionDTO(int kinopoiskID){
+        CinemaDTO cinemaDTO= movieApiService.getFilmById(kinopoiskID);
+        String description = cinemaDTO.getDescription();
+        return description;
     }
     public List<Movie> getCinemaListByGenreFromGenreCountryDTO(int page, String s){
         List<CinemaDTO> cinemaDTOList = movieApiService.getCinemaList(page);

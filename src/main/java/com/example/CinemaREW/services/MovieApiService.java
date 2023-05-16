@@ -45,12 +45,4 @@ public class MovieApiService {
                 .bodyToMono(GenreCountryResponse.class).block();
         return response.getData();
     }
-
-//    public List<GenreDTO> getGenreList(int limit){
-//        CinemaGenresResponse response = webClient.get()
-//                .uri(uriBuilder -> uriBuilder.path("/genres/anime").queryParam("limit",limit).build()).retrieve()
-//                .bodyToMono(CinemaGenresResponse.class).block();
-//
-//        return response.getData();
-//    }
 }

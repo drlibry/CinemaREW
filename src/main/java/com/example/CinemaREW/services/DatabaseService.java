@@ -53,6 +53,7 @@ public class DatabaseService {
         }
     }
 
+
     @Scheduled(fixedRate = 24 * 60 * 60 * 1000)
     @Scheduled(fixedDelay = 5000)
     public void updateMovieTable() throws InterruptedException {
@@ -88,6 +89,9 @@ public class DatabaseService {
                         //else movieCountryRepository.updateMovieCountry(movieCountry1.getId(),movieCountry.getMovie(),movieCountry.getCountry());
                     }
                     //как-то обновить description
+                    MovieDescription movieDescription = new MovieDescription(movie1, movie1.getDescription());
+
+
 
 
                 }
