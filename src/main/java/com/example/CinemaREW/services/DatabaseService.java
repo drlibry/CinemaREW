@@ -72,8 +72,10 @@ public class DatabaseService {
                             movie.getRatingKinopoisk(),
                             movie.getRatingImdb(),
                             movie.getYear(),
-                            movie.getPosterUrl());
+                            movie.getPosterUrl(),
+                            movie.getDescription());
                     Movie movie1 = movieList.get(i);
+
                     for (int j = 0; j < movie1.getGenres().size(); j++) {
                         MovieGenre movieGenre = new MovieGenre(movie1, movie1.getGenres().get(j).getGenre());
                         MovieGenre movieGenre1 = movieGenreRepository.findMovieGenreByMovieAndGenre(movie1,
@@ -81,6 +83,7 @@ public class DatabaseService {
                         if(movieGenre1==null) movieGenreRepository.save(movieGenre);
                         else movieGenreRepository.updateMovieGenre(movieGenre1.getId(),movieGenre.getMovie(),movieGenre.getGenre());
                     }
+
                     for (int j = 0; j < movie1.getCountries().size(); j++) {
                         MovieCountry movieCountry = new MovieCountry(movie1, movie1.getCountries().get(j).getCountry());
                         MovieCountry movieCountry1 = movieCountryRepository.findMovieCountryByMovieAndCountry(movie1,

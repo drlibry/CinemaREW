@@ -57,7 +57,8 @@ public class Movie {
                   float ratingKinopoisk,
                   float ratingImdb,
                   int year,
-                  String posterUrl){ //String description
+                  String posterUrl,
+                  String description){ //String description
          //this.id = id;
          this.kinopoiskId = kinopoiskId;
          this.nameRu = nameRu;
@@ -68,7 +69,7 @@ public class Movie {
          this.ratingImdb = ratingImdb;
          this.year = year;
          this.posterUrl= posterUrl;
-         //this.description =description ;
+         this.description =description ;
      }
 
 

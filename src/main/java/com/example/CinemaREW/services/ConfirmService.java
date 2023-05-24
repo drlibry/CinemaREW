@@ -23,6 +23,7 @@ public class ConfirmService {
 
 
     public Movie getCinemaFromCinemaDTO(CinemaDTO cinemaDTO){
+        String description = getDescriptionFromDescriptionDTO(cinemaDTO.getKinopoiskId());
         Movie movie=new Movie(
                 cinemaDTO.getKinopoiskId(),
                 cinemaDTO.getNameRu(),
@@ -30,7 +31,8 @@ public class ConfirmService {
                 cinemaDTO.getRatingKinopoisk(),
                 cinemaDTO.getRatingImdb(),
                 cinemaDTO.getYear(),
-                cinemaDTO.getPosterUrl());
+                cinemaDTO.getPosterUrl(),
+                description);
         List<MovieGenre> movieGenreList=new ArrayList<>();
         for(int i=0;i<cinemaDTO.getGenres().size();i++){
             movieGenreList.add(new MovieGenre(movie,genreRepository.findGenreByName(cinemaDTO.getGenres().get(i).getGenre())));
@@ -41,8 +43,8 @@ public class ConfirmService {
             movieCountryList.add(new MovieCountry(movie, countryRepository.findCountryByName(cinemaDTO.getCountries().get(i).getCountry())));
         }
         movie.setCountries(movieCountryList);
-        CinemaDTO cDTO= movieApiService.getFilmById(cinemaDTO.getKinopoiskId());//не уверена, что это правильно
-        movie.setDescription(cDTO.getDescription());//не уверена, что это правильно
+//        CinemaDTO cDTO= movieApiService.getFilmById(cinemaDTO.getKinopoiskId());//не уверена, что это правильно
+//        movie.setDescription(cDTO.getDescription());//не уверена, что это правильно
         return movie;
     }
 

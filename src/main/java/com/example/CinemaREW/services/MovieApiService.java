@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.util.List;
 @Service
 public class MovieApiService {
-    private final WebClient webClient;
+    private WebClient webClient;
 
     public MovieApiService(WebClient webClient) {
         this.webClient = webClient;
@@ -22,7 +22,8 @@ public class MovieApiService {
                         .queryParam("yearFrom", 1000)
                         .queryParam("yearTo", 3000)
                         .queryParam("page", page)
-                        .build()).retrieve()
+                        .build())
+                .header("X-API-KEY","ace706e7-1540-4e4d-b15e-080bf6619b6e").retrieve()
                 .bodyToMono(CinemaSearchResponse.class).block();
 
         return response.getData();
@@ -32,7 +33,8 @@ public class MovieApiService {
         CinemaResponse response=webClient.get()
                 .uri(uriBuilder -> uriBuilder.path("/api/v2.2/films")
                         .queryParam("id",kinopoiskId)
-                        .build()).retrieve()
+                        .build())
+                .header("X-API-KEY","ace706e7-1540-4e4d-b15e-080bf6619b6e").retrieve()
                 .bodyToMono(CinemaResponse.class).block();
         return response.getData();
     }
@@ -41,7 +43,8 @@ public class MovieApiService {
         GenreCountryResponse response=webClient.get()
                 .uri(uriBuilder -> uriBuilder.path("/api/v2.2/films/filters")
                         ///.queryParam("page",page)
-                        .build()).retrieve()
+                        .build())
+                .header("X-API-KEY","ace706e7-1540-4e4d-b15e-080bf6619b6e").retrieve()
                 .bodyToMono(GenreCountryResponse.class).block();
         return response.getData();
     }

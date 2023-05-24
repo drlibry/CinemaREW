@@ -10,11 +10,11 @@
   <div class="pod_shapka1">
     <a th:if="${user!=null}" class="pod_shapka1" th:href="@{/auth_home}">
       <img alt="Sharingan" srcset="https://img.icons8.com/plasticine/512/sharingan.png 2x" style="width: 80px; height: 80px;">
-      <p class="animeHub">CinemaREW</p>
+      <p class="CinemaREW">CinemaREW</p>
     </a>
     <a th:if="${user==null}" class="pod_shapka1" th:href="@{/}">
       <img alt="Sharingan" srcset="https://img.icons8.com/plasticine/512/sharingan.png 2x" style="width: 80px; height: 80px;">
-      <p class="animeHub">CinemaREW</p>
+      <p class="CinemaREW">CinemaREW</p>
     </a>
   </div>
   <div class="pod_shapka2">
@@ -32,12 +32,12 @@
 <p style="margin-left: 15px; margin-top: 20px; font-weight: 500; font-size: 24px; text-align: center" th:text="${user.name}"></p>
 <p style="margin-left: 15px; margin-top: 20px; font-weight: 300; font-size: 24px; text-align: center">Your movie list:</p>
 <div class="anilist">
-  <div class="anime_card" th:each="useranime: ${anime_list}">
-    <img th:src="${useranime.anime.getWebp()}">
-    <a th:href="@{/anime_info/{animeId}(animeId=${useranime.anime.id})}">
-      <div class="anime_title">
-        <p th:text="${useranime.anime.title}"></p>
-        <div style="margin-top: 60px" th:text="${useranime.status}"></div>
+  <div class="movie_card" th:each="usermovie: ${movie_list}">
+    <img th:src="${usermovie.movie.getWebp()}">
+    <a th:href="@{/movie_info/{movieId}(movieId=${usermovie.movie.id})}">
+      <div class="animemovie_title">
+        <p th:text="${usermovie.movie.title}"></p>
+        <div style="margin-top: 60px" th:text="${usermovie.status}"></div>
       </div>
     </a>
   </div>

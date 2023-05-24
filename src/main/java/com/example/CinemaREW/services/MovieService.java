@@ -23,13 +23,15 @@ import java.util.List;
 
 public class MovieService {
     private MovieRepository movieRepository;
-    private List<Movie> movies = new ArrayList<>();
+    private List<Movie> movieList = new ArrayList<>();
 
+    public Movie getMovie(Long id) {
+        return movieRepository.findById(id).orElse(null);
+    }
 
-    public List<Movie> listMovies(String s){
-        List<Movie> movieList = movieRepository.findAll();
+    public  List<Movie> searchMovieList(String s) {
         movieList = movieRepository.findAll().stream()
-                .filter(movie -> movie.getNameRu().toLowerCase().contains(s.toLowerCase())).toList();
+                .filter(anime -> anime.getNameRu().toLowerCase().contains(s.toLowerCase())).toList();
         return movieList;
     }
 

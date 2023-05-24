@@ -1,5 +1,6 @@
-//package ru.anime.app.config;
-//
+package com.example.CinemaREW.config;
+
+//import com.example.CinemaREW.services.UserDetailService;
 //import lombok.RequiredArgsConstructor;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
@@ -13,22 +14,21 @@
 //import org.springframework.security.crypto.password.*;
 //import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 //import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-//import ru.anime.app.Services.UserDetailService;
 //
 //import java.util.HashMap;
 //import java.util.Map;
 //
 //@EnableWebSecurity
 //@RequiredArgsConstructor
-//public class SecurityConfig extends WebSecurityConfigurerAdapter {
+//public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //    private final UserDetailService userDetailService;
-//    @Override
+//    //@Override
 //    protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests().antMatchers("/","/home/**","/registration","/anime_info/**","/genres/**","/search/**", "/styles/**", "/scripts/**").permitAll().and().authorizeRequests().anyRequest().authenticated()
+//        http.authorizeRequests().antMatchers("/","/home/**","/registration","/movie_info/**","/genres/**","/search/**", "/styles/**", "/scripts/**").permitAll().and().authorizeRequests().anyRequest().authenticated()
 //                .and().formLogin().loginPage("/login").defaultSuccessUrl("/auth_home").permitAll()
 //                .and().logout().permitAll().logoutSuccessUrl("/");
 //    }
-//    @Override
+//    //@Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
 //    }
@@ -43,4 +43,5 @@
 //        encoders.put("sha256", new StandardPasswordEncoder());
 //        return new DelegatingPasswordEncoder(idForEncode, encoders);
 //    }
+//
 //}

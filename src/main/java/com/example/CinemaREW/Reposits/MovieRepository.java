@@ -25,12 +25,14 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
             "a.ratingKinopoisk=:ratingKinopoisk," +
             "a.ratingImdb=:ratingImdb," +
             "a.year=:year," +
-            "a.posterUrl=:posterUrl where a.kinopoiskId=:kinopoiskId")
+            "a.posterUrl=:posterUrl," +
+            "a.description=:description where a.kinopoiskId=:kinopoiskId")
     void updateMovie(int kinopoiskId,
                      String nameRu,
                      String nameOriginal,
                      float ratingKinopoisk,
                      float ratingImdb,
                      int year,
-                     String posterUrl);
+                     String posterUrl,
+                     String description);
 }
