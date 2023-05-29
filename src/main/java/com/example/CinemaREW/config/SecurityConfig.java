@@ -1,5 +1,5 @@
 package com.example.CinemaREW.config;
-
+//
 //import com.example.CinemaREW.services.UserDetailService;
 //import lombok.RequiredArgsConstructor;
 //import org.springframework.context.annotation.Bean;
@@ -7,7 +7,7 @@ package com.example.CinemaREW.config;
 //import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 //import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+////import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 //import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -19,10 +19,10 @@ package com.example.CinemaREW.config;
 //import java.util.Map;
 //
 //@EnableWebSecurity
-//@RequiredArgsConstructor
-//public class SecurityConfig extends WebSecurityConfigurerAdapter{
+////@RequiredArgsConstructor
+//public class SecurityConfig{
 //    private final UserDetailService userDetailService;
-//    //@Override
+    //@Override
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http.authorizeRequests().antMatchers("/","/home/**","/registration","/movie_info/**","/genres/**","/search/**", "/styles/**", "/scripts/**").permitAll().and().authorizeRequests().anyRequest().authenticated()
 //                .and().formLogin().loginPage("/login").defaultSuccessUrl("/auth_home").permitAll()
@@ -43,5 +43,5 @@ package com.example.CinemaREW.config;
 //        encoders.put("sha256", new StandardPasswordEncoder());
 //        return new DelegatingPasswordEncoder(idForEncode, encoders);
 //    }
-//
+
 //}

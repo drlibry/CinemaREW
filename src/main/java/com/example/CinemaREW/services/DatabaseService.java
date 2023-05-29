@@ -63,7 +63,7 @@ public class DatabaseService {
             List<Movie> movieList = confirmService.getCinemaListFromCinemaDTOList(page);
             Movie movie;
             for (int i = 0; i < movieList.size(); i++) {
-                movie = movieRepository.findMovieById(movieList.get(i).getKinopoiskId());
+                movie = movieRepository.findMovieByKinopoiskId(movieList.get(i).getKinopoiskId());
                 if (movie == null) movieRepository.save(movieList.get(i));
                 else {
                     movieRepository.updateMovie(movie.getKinopoiskId(),
@@ -93,7 +93,7 @@ public class DatabaseService {
                     }
                     //как-то обновить description
                     MovieDescription movieDescription = new MovieDescription(movie1, movie1.getDescription());
-
+                    System.out.println("HELLOOOOOOOOOOO UPDATE DB");
 
 
 

@@ -14,7 +14,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     List<Movie> findAll();
 
-    Movie findMovieById(int id);
+    Movie findMovieByKinopoiskId(int kinopoiskId);
 
 
     //обновление бд
