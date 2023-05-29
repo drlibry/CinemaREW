@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,11 +20,16 @@ import java.util.List;
 @Service
 @Slf4j
 @Component
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 
 public class MovieService {
     private MovieRepository movieRepository;
     private List<Movie> movieList = new ArrayList<>();
+
+    @Autowired
+    public MovieService(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
+    }
 
     public Movie getMovie(Long id) {
         return movieRepository.findById(id).orElse(null);

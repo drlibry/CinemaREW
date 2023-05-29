@@ -25,6 +25,7 @@ public class MovieApiService {
                         .build())
                 .header("X-API-KEY","ace706e7-1540-4e4d-b15e-080bf6619b6e").retrieve()
                 .bodyToMono(CinemaSearchResponse.class).block();
+        System.out.println("HELLOOOOOOOOOOO");
 
         return response.getData();
     }
